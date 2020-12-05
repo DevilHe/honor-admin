@@ -11,6 +11,8 @@ info: # 描述信息
 servers: # 接口服务器地址，也用于路由声明前缀
   - url: /mock-api/v1
 tags: # 接口文档中的标签名称
+  - name: players
+    description: 玩家相关接口
   - name: articles
     description: Articles data related api.
   - name: roles
@@ -20,6 +22,14 @@ tags: # 接口文档中的标签名称
   - name: users
     description: Users related api.
 paths: # 接口路径和定义
+  /players:
+    get: # method类型
+      tags: # 所属标签
+        - players
+      operationId: getPlayers # 操作id，必要参数，映射到实现函数
+      responses:
+        200:
+          description: OK
   /articles:
     get:
       tags:
