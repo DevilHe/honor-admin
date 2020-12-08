@@ -51,7 +51,7 @@ export const getPlayers = (req: Request, res: Response) => {
     code: 20000,
     data: {
       total: mockList.length,
-      items: pageList
+      players: pageList
     }
   })
 }
