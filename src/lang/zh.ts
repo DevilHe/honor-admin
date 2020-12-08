@@ -23,6 +23,8 @@ export default {
     draggableKanban: '可拖拽看板',
     draggableList: '可拖拽列表',
     draggableSelect: '可拖拽选择',
+    playerMgt: '玩家管理', // TODO
+    playerList: '玩家列表', // TODO
     charts: '图表',
     barChart: '柱状图表',
     lineChart: '折线图',
