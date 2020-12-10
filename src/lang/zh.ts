@@ -110,6 +110,10 @@ export default {
     imageUploadTips: '由于我在使用时它只有vue@1版本，而且和mockjs不兼容，所以自己改造了一下，如果大家要使用的话，优先还是使用官方版本。',
     changeLanguageTips: '切换语言成功'
   },
+  player: { // TODO
+    accountname: '请输入账户名',
+    btnFilter: '查询'
+  },
   table: {
     dynamicTips1: '固定表头, 按照表头顺序排序',
     dynamicTips2: '不固定表头, 按照点击顺序排序',

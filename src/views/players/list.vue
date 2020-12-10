@@ -1,5 +1,16 @@
 <template>
   <div class="app-container">
+    <!-- 过滤条件 -->
+    <div class="filter-container">
+      <el-input
+        v-model="listQuery.accountname"
+        :placeholder="$t('player.accountname')"
+        style="width: 200px;"
+        @keyup.enter.native="handleFilter"></el-input>
+      <el-button type="primary" icon="el-icon-search" @click="handleFilter">
+        {{$t('player.btnFilter')}}
+      </el-button>
+    </div>
     <!-- 列表 -->
     <el-table
       v-loading="listLoading"
@@ -53,7 +64,8 @@ export default class list extends Vue {
   // 查询
   listQuery = {
     page: 1, // 默认第一页
-    limit: 10 // 每页条数
+    limit: 10, // 每页条数
+    accountname: undefined // 按照账户名搜索
   }
 
   created() {
@@ -71,6 +83,13 @@ export default class list extends Vue {
     // 设置数据总条数
     this.total = data.total
     this.listLoading = false
+  }
+
+  // 过滤处理
+  handleFilter() {
+    // 重置页码
+    this.listQuery.page = 1
+    this.getList()
   }
 }
 </script>
