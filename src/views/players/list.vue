@@ -7,8 +7,19 @@
         :placeholder="$t('player.accountname')"
         style="width: 200px;"
         @keyup.enter.native="handleFilter"></el-input>
-      <el-button type="primary" icon="el-icon-search" @click="handleFilter">
+      <el-button
+        type="primary"
+        icon="el-icon-search"
+        @click="handleFilter">
         {{$t('player.btnFilter')}}
+      </el-button>
+
+      <!-- 新增按钮 -->
+      <el-button
+        type="success"
+        icon="el-icon-edit"
+        @click="handleCreate">
+        {{$t('player.btnCreate')}}
       </el-button>
     </div>
     <!-- 列表 -->
@@ -90,6 +101,11 @@ export default class list extends Vue {
     // 重置页码
     this.listQuery.page = 1
     this.getList()
+  }
+
+  // 新增玩家
+  handleCreate() {
+    this.$router.push('/players/create')
   }
 }
 </script>

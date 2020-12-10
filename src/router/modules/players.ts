@@ -16,15 +16,15 @@ const playerRoutes: RouteConfig = {
         title: 'playerList',
         icon: 'peoples'
       }
+    },
+    {
+      path: 'create',
+      component: () => import('@/views/players/create.vue'),
+      meta: {
+        title: 'createPlayer',
+        icon: 'edit'
+      }
     }
-    // {
-    //   path: 'create',
-    //   component: () => import('@/views/players/create.vue'),
-    //   meta: {
-    //     title: 'createPlayer',
-    //     icon: 'edit'
-    //   }
-    // },
     // {
     //   path: 'edit/:id(\\d+)',
     //   component: () => import('@/views/players/edit.vue'),

@@ -25,6 +25,7 @@ export default {
     draggableSelect: '可拖拽选择',
     playerMgt: '玩家管理', // TODO
     playerList: '玩家列表', // TODO
+    createPlayer: '创建玩家', // TODO
     charts: '图表',
     barChart: '柱状图表',
     lineChart: '折线图',
@@ -112,7 +113,8 @@ export default {
   },
   player: { // TODO
     accountname: '请输入账户名',
-    btnFilter: '查询'
+    btnFilter: '查询',
+    btnCreate: '新增'
   },
   table: {
     dynamicTips1: '固定表头, 按照表头顺序排序',
