@@ -26,3 +26,17 @@ export const getPlayer = (id: number) =>
     url: '/players/' + id.toString(),
     method: 'get'
   })
+
+export const createPlayer = (data:any) =>
+  request({
+    url: '/players',
+    method: 'post',
+    data
+  })
+
+export const updatePlayer = (id: number, data:any) =>
+  request({
+    url: '/players' + id,
+    method: 'put',
+    data
+  })

@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { defaultPlayerData, getPlayer } from '@/api/players'
+import { defaultPlayerData, getPlayer, createPlayer, updatePlayer } from '@/api/players'
 
 @Component
 export default class playerDetail extends Vue {
@@ -55,9 +55,9 @@ export default class playerDetail extends Vue {
     // 提交操作
     try {
       if (this.isEdit) {
-        // await updatePlayer(this.playerForm.id, this.playerForm)
+        await updatePlayer(this.playerForm.id, this.playerForm)
       } else {
-        // await createPlayer(this.playerForm)
+        await createPlayer(this.playerForm)
       }
     } catch (error) {
       console.error(error)
@@ -70,6 +70,7 @@ export default class playerDetail extends Vue {
       type: 'success',
       duration: 2000
     })
+    this.$router.push('/players/list')
 
     // 还原加载状态
     this.loading = false
