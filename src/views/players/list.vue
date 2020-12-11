@@ -4,7 +4,7 @@
     <div class="filter-container">
       <el-input
         v-model="listQuery.accountname"
-        :placeholder="$t('player.accountname')"
+        :placeholder="$t('player.accountnamePlc')"
         style="width: 200px;"
         @keyup.enter.native="handleFilter"></el-input>
       <el-button

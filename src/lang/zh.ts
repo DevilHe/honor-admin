@@ -112,9 +112,12 @@ export default {
     changeLanguageTips: '切换语言成功'
   },
   player: { // TODO
-    accountname: '请输入账户名',
+    accountnamePlc: '请输入账户名',
     btnFilter: '查询',
-    btnCreate: '新增'
+    btnCreate: '新增',
+    accountname: '账户名',
+    nickname: '昵称',
+    submit: '提交'
   },
   table: {
     dynamicTips1: '固定表头, 按照表头顺序排序',
