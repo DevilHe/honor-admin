@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 创建一个player-detail组件，更新时也可复用 -->
-    <player-detail :is-edit="false"></player-detail>
+    <player-detail :is-edit="true"></player-detail>
   </div>
 </template>
 

@@ -37,6 +37,14 @@
       <el-table-column label="账户名" align="center">
         <template v-slot="{row}">{{row.accountname}}</template>
       </el-table-column>
+      <!-- 操作列 -->
+      <el-table-column label="操作" align="center">
+        <template v-slot="{row}">
+          <router-link :to="'/players/edit/'+row.id">
+            <el-button type="primary" icon="el-icon-edit">更新</el-button>
+          </router-link>
+        </template>
+      </el-table-column>
     </el-table>
 
     <!-- 分页 -->

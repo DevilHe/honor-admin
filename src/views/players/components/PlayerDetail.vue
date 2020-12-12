@@ -73,7 +73,7 @@ export default class playerDetail extends Vue {
   imageUrl = ''
 
   // 根据isEdit状态决定是否需要获取玩家详细信息
-  create() {
+  created() {
     if (this.isEdit) {
       const id = this.$route.params && this.$route.params.id
       this.fetchData(parseInt(id))

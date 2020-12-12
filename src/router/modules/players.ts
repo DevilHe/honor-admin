@@ -24,17 +24,17 @@ const playerRoutes: RouteConfig = {
         title: 'createPlayer',
         icon: 'edit'
       }
+    },
+    {
+      path: 'edit/:id(\\d+)',
+      component: () => import('@/views/players/edit.vue'),
+      meta: {
+        title: 'editPlayer',
+        hidden: true, // 不需要导航菜单
+        noCache: true, // tag标签页应该是多个，不应该缓存
+        activeMenu: '/players/list' // 左侧导航菜单中相关激活url
+      }
     }
-    // {
-    //   path: 'edit/:id(\\d+)',
-    //   component: () => import('@/views/players/edit.vue'),
-    //   meta: {
-    //     title: 'editPlayer',
-    //     hidden: true, // 不在导航选项中出现
-    //     noCache: true, // tag标签页应该是多个，不应该缓存
-    //     activeMenu: '/players/list' // 左侧导航中激活的url
-    //   }
-    // }
   ]
 }
 

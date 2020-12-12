@@ -26,6 +26,7 @@ export default {
     playerMgt: '玩家管理', // TODO
     playerList: '玩家列表', // TODO
     createPlayer: '创建玩家', // TODO
+    editPlayer: '编辑玩家', // TODO
     charts: '图表',
     barChart: '柱状图表',
     lineChart: '折线图',
