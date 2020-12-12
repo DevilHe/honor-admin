@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form ref="form" :model="playerForm">
+    <el-form ref="form" :model="playerForm" :rules="rules">
       <el-form-item prop="accountname" :label="$t('player.accountname')">
         <el-input v-model="playerForm.accountname"></el-input>
       </el-form-item>
@@ -30,9 +30,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Ref, Vue } from 'vue-property-decorator'
 import { defaultPlayerData, getPlayer, createPlayer, updatePlayer } from '@/api/players'
 import { ElUploadInternalFileDetail } from 'element-ui/types/upload'
+import { Form } from 'element-ui'
 
 @Component
 export default class playerDetail extends Vue {
@@ -40,8 +41,30 @@ export default class playerDetail extends Vue {
   @Prop({ default: false })
   isEdit!: boolean
 
+  @Ref()
+  form!: Form
+
   // 数据模型，默认全为空，复制defaultPlayerData，防止全局污染
   playerForm = Object.assign({}, defaultPlayerData)
+
+  // 自定义非空校验函数
+  validateRequire = (rule: any, value: string, callback: Function) => {
+    if (value === '') {
+      // this.$message({
+      //   message: rule.field + '必须填写',
+      //   type: 'error'
+      // })
+      callback(new Error(rule.field + '必须填写'))
+    } else {
+      callback()
+    }
+  }
+
+  // 表单校验规则
+  rules = {
+    accountname: [{ validator: this.validateRequire }],
+    nickname: [{ validator: this.validateRequire }]
+  }
 
   // 加载状态
   loading = false
@@ -86,31 +109,38 @@ export default class playerDetail extends Vue {
 
   // 提交表单
   async submitForm() {
-    // 加载状态
-    this.loading = true
+    // 校验全局判断
+    this.form.validate(async valid => {
+      if (valid) {
+        // 加载状态
+        this.loading = true
 
-    // 提交操作
-    try {
-      if (this.isEdit) {
-        await updatePlayer(this.playerForm.id, this.playerForm)
+        // 提交操作
+        try {
+          if (this.isEdit) {
+            await updatePlayer(this.playerForm.id, this.playerForm)
+          } else {
+            await createPlayer(this.playerForm)
+          }
+        } catch (error) {
+          console.error(error)
+        }
+
+        // 操作成功提示信息
+        this.$notify({
+          title: '操作成功',
+          message: '新增玩家数据成功',
+          type: 'success',
+          duration: 2000
+        })
+        this.$router.push('/players/list')
+
+        // 还原加载状态
+        this.loading = false
       } else {
-        await createPlayer(this.playerForm)
+        console.error('校验失败，请修改后重试！')
       }
-    } catch (error) {
-      console.error(error)
-    }
-
-    // 操作成功提示信息
-    this.$notify({
-      title: '操作成功',
-      message: '新增玩家数据成功',
-      type: 'success',
-      duration: 2000
     })
-    this.$router.push('/players/list')
-
-    // 还原加载状态
-    this.loading = false
   }
 }
 </script>
