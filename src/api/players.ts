@@ -27,16 +27,22 @@ export const getPlayer = (id: number) =>
     method: 'get'
   })
 
-export const createPlayer = (data:any) =>
+export const createPlayer = (data: any) =>
   request({
     url: '/players',
     method: 'post',
     data
   })
 
-export const updatePlayer = (id: number, data:any) =>
+export const updatePlayer = (id: number, data: any) =>
   request({
     url: '/players' + id,
     method: 'put',
     data
+  })
+
+export const deletePlayer = (id: number) =>
+  request({
+    url: '/players/' + id.toString(),
+    method: 'delete'
   })
